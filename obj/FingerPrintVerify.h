@@ -11,6 +11,6 @@
 @interface FingerPrintVerify : NSObject
 
 //指纹验证
--(void)verifyFingerprint;
+-(void)verifyFingerprintWithSuccessHandler:(void (^)(void))handler;
 
 @end

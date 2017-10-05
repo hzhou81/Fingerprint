@@ -15,7 +15,7 @@
 @implementation FingerPrintVerify
 
 //指纹验证
--(void)verifyFingerprint
+-(void)verifyFingerprintWithSuccessHandler:(void (^)(void))handler
 {
     TouchInstance *instance = [TouchInstance instance];
     if([instance canEvaluatePolicy])
@@ -71,6 +71,8 @@
                     if(success)
                     {
                         result = YES;
+			//执行Handler的代码块
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),handler);
                     }
                 }
                 
